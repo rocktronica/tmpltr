@@ -29,8 +29,6 @@
         ] },
 		{ name: "Modernizr", url: "http://www.modernizr.com/" },
 		{ name: "PrefixFree", url: "http://leaverou.github.com/prefixfree/" }
-		// { name: "Underscore", url: "http://documentcloud.github.com/underscore" },
-		// { name: "Backbone", url: "http://documentcloud.github.com/backbone" },
 	],
 	footer: "Made by <a href=\"http://mynameistommy.com/\">Tommy</a>. MIT licensed or as components require."
 }
