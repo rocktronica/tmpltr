@@ -99,15 +99,15 @@ $.fn.ready(function(){
 						tmpltr.fn.useDataStructureStyle(def);
 					}
 				}
-				$.get("_defaults/data.json?" + iMilli, function(resp) {
+				$.get("defaults/data.json?" + iMilli, function(resp) {
 					def.data = resp;
 					areWeThereYet();
 				}, "text");
-				$.get("_defaults/structure.html?" + iMilli, function(resp) {
+				$.get("defaults/structure.html?" + iMilli, function(resp) {
 					def.structure = resp;
 					areWeThereYet();
 				}, "text");
-				$.get("_defaults/style.css?" + iMilli, function(resp) {
+				$.get("defaults/style.css?" + iMilli, function(resp) {
 					def.style = resp;
 					areWeThereYet();
 				}, "text");
@@ -130,7 +130,7 @@ $.fn.ready(function(){
 						"<textarea name='structure'>" + tmpltr.editors.structure.getSession().getValue() + "</textarea> " +
 						"<textarea name='style'>" + tmpltr.editors.style.getSession().getValue() + "</textarea> " +
 					"</form> " +
-					"<script src='" + document.location.protocol + "//" + document.location.host + document.location.pathname + "_js/external.js'></script>"
+					"<script src='" + document.location.protocol + "//" + document.location.host + document.location.pathname + "js/external.js'></script>"
 				);
 				window.open(sUrl);
 			},
