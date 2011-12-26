@@ -63,7 +63,7 @@ body.loading:before {
 	height: 100%;
 	width: 100%;
 	color: #666;
-	background: #fff url("_images/loading.gif") center center no-repeat;
+	background: #fff url("images/loading.gif") center center no-repeat;
 	text-align: center;
 	z-index: 1000;
 }

@@ -2,6 +2,5 @@ Project.espressostorage
 user.tommy.espressostorage
 tmpltr.esproj
 _test
-_js/legacy.js
-_js/backbone.js
-js/analytics.js
+js/legacy.js
+js/backbone.js

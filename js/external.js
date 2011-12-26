@@ -13,7 +13,7 @@
 	var $body = $("body");
 	var $a = $("<a href='#'>Edit</a>")
 		.css({
-			position: "absolute",
+			position: "fixed",
 			bottom: 0,
 			right: 0,
 			color: "#E90094",
