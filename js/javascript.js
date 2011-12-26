@@ -8,13 +8,11 @@ $.fn.ready(function(){
 
 	var $body = $("body");
 
-	// hard fail for older browsers
-	for (prop in Modernizr) {
-		if (Modernizr[prop] === false) {
-			$("body").addClass("error").removeClass("loading").css({ width: "700px", margin: "20px auto" }).html("<h1>Dang.</h1><p>Looks like your browser didn't pass whatever random tests I decided were arbitrarily important:</p><pre>Modernizr: " + JSON.stringify(Modernizr).replace(/,/gi, ",\n    ").replace(/{/gi, "{\n    ").replace(/}/gi, "\n}") + "</pre><p>If you think this is in error or that I'm a dummy, contact me <a href=\"http://mynameistommy.com/\">here</a>. Otherwise, if you'd like to use this app, <a href='http://browsehappy.com/'>upgrade your browser</a>.</p>");
-			return false;
-		}
-	};
+	// browser fail
+	if ((Modernizr.generatedcontent === false) || (Modernizr.localstorage === false)) {
+		$("body").addClass("error").removeClass("loading").css({ width: "700px", margin: "20px auto" }).html("<h1>Dang.</h1><p>Looks like your browser didn't pass whatever random tests I decided were arbitrarily important:</p><pre>Modernizr: " + JSON.stringify(Modernizr).replace(/,/gi, ",\n    ").replace(/{/gi, "{\n    ").replace(/}/gi, "\n}") + "</pre><p>If you think this is in error or that I'm a dummy, contact me <a href=\"http://mynameistommy.com/\">here</a>. Otherwise, if you'd like to use this app, <a href='http://browsehappy.com/'>upgrade your browser</a>.</p>");
+		return false;
+	}
 
 	tmpltr = {
 		appname: "tmpltr",
@@ -232,9 +230,9 @@ $.fn.ready(function(){
 
 	// view switcher and nav links
 	tmpltr.$.nav
-		.on("change", ".inpView", function(){
-			var $obj = $(this), sVal = $obj.val();
-			$body.attr("view", sVal);
+		.on("click", ".inpView", function(){
+			var $checked = tmpltr.$.nav.find("input:checked"), sVal = $checked.val();
+			$body.attr("role", sVal);
 			localStorage.view = sVal;
 			$.each(tmpltr.editors, function(i, editor) {
 				editor.resize();
@@ -253,10 +251,12 @@ $.fn.ready(function(){
 	if (localStorage.view) { $(".inpView[value='" + localStorage.view + "']").click(); }
 	
 	// handle files getting dragged into document
-	$body[0].addEventListener('dragover', tmpltr.fn.fileDragOver, false);
-	$body[0].addEventListener('drop', tmpltr.fn.fileDrop, false);
-	tmpltr.$.output[0].addEventListener('dragover', tmpltr.fn.fileDragOver, false);
-	tmpltr.$.output[0].addEventListener('drop', tmpltr.fn.fileDrop, false);
+	if (Modernizr.file) {
+		$body[0].addEventListener('dragover', tmpltr.fn.fileDragOver, false);
+		$body[0].addEventListener('drop', tmpltr.fn.fileDrop, false);
+		tmpltr.$.output[0].addEventListener('dragover', tmpltr.fn.fileDragOver, false);
+		tmpltr.$.output[0].addEventListener('drop', tmpltr.fn.fileDrop, false);
+	}
 
 	// force links in output out of iframe
 	tmpltr.$.output.on("click", "a", function() {

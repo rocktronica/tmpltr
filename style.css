@@ -167,14 +167,14 @@ div[role="output"] {
 
 /* --- view overrides (default=split) --- */
 
-body[view="edit"] div[role="input"] { width: auto; right: 10px; }
-body[view="edit"] div[role="input"] section {
+body[role="edit"] div[role="input"] { width: auto; right: 10px; }
+body[role="edit"] div[role="input"] section {
 	width:  33.3%;
 	float: left;
 	height: 100%;
 	margin: 0;
 }
-body[view="edit"] div[role="output"] { display: none; }
+body[role="edit"] div[role="output"] { display: none; }
 
-body[view="result"] div[role="input"] { display: none; }
-body[view="result"] div[role="output"] { left: 20px; }
+body[role="result"] div[role="input"] { display: none; }
+body[role="result"] div[role="output"] { left: 20px; }
