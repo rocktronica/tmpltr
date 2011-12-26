@@ -24,9 +24,7 @@
 	attribution: [
 		{ name: "Mustache", url: "http://mustache.github.com/" },
 		{ name: "Ace", url: "https://github.com/ajaxorg/ace" },
-		{ name: "jQuery", url: "http://jquery.com/", children: [
-            { name: "Throttle / Debounce", url: "http://benalman.com/projects/jquery-throttle-debounce-plugin/" }
-        ] },
+		{ name: "jQuery", url: "http://jquery.com/" },
 		{ name: "Modernizr", url: "http://www.modernizr.com/" },
 		{ name: "PrefixFree", url: "http://leaverou.github.com/prefixfree/" }
 	],

@@ -2,9 +2,7 @@ var tmpltr;		// kept outside for console inspection
 
 // needed:		debounce render
 // consider:	more sensical nomenclature
-// oops:		undefined location in FF, occasional stuck view on load
-// weird: 		double /s on script
-// look:		https://github.com/ajaxorg/ace/wiki/Default-Keyboard-Shortcuts
+// bugs:		occasional stuck view on load
 
 $.fn.ready(function(){
 
