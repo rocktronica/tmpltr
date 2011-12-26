@@ -10,14 +10,14 @@
 			paragraphs: [
 				"<em>Confused? Change something in one of the textareas and watch what happens.</em>",
 				"Data is stored as JSON, bound to an HTML template, and styled with CSS. Changes are automatically saved locally to your browser but can also be exported for sharing.",
-				"Yep, this is another one of those <a href='http://jsfiddle.net/'>jsFiddle</a> clones. But my take's less about JavaScript and more about realtime template binding. It's also mostly just for fun."
+				"Yep, this is another <a href='http://jsfiddle.net/'>jsFiddle</a> clone. But my take's less about JavaScript and more about realtime template binding. It's also mostly just for fun."
 			]
 		},
 		{
 			title: "Make It Better",
 			paragraphs: [
 				"Requests welcome. Forks encouraged. Contact me <a href=\"http://mynameistommy.com/\">here</a> if you have any questions or suggestions.",
-				"<strong>Source:</strong> <a href=\"#\">http://rocktronica.github.com/blah</a>"
+				"<strong>Source:</strong> <a href=\"https://github.com/rocktronica/tmpltr\">https://github.com/rocktronica/tmpltr</a>"
 			]
 		}
 	],
