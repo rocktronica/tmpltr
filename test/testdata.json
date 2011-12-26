@@ -1,0 +1,8 @@
+{
+	test: true,
+	name: "Tommy",
+	age: 25,
+	object: {
+		lorem: "ipsum"
+	}
+}
