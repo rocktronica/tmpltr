@@ -260,6 +260,14 @@ $.fn.ready(function(){
 	tmpltr.$.output[0].addEventListener('dragover', tmpltr.fn.fileDragOver, false);
 	tmpltr.$.output[0].addEventListener('drop', tmpltr.fn.fileDrop, false);
 
+	// force links in output out of iframe
+	tmpltr.$.output.on("click", "a", function() {
+		var $a = $(this);
+		if ($a.attr("href") && $a.attr("href") !== "#") {
+			document.location = $a.attr("href");
+		}
+	});
+
 	$body.removeClass("loading");
 
 });
