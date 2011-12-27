@@ -29,5 +29,5 @@
 		{ name: "Modernizr", url: "http://www.modernizr.com/" },
 		{ name: "PrefixFree", url: "http://leaverou.github.com/prefixfree/" }
 	],
-	footer: "Made by <a href=\"http://mynameistommy.com/\">Tommy</a>. MIT licensed or as components require."
+	footer: "Made by <a href=\"http://mynameistommy.com/\">Tommy</a> (<a href='https://twitter.com/#!/rocktronica'>@rocktronica</a>). MIT licensed or as components require."
 }
