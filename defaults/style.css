@@ -41,7 +41,10 @@ a {
 	color: #CA0080;
 	text-decoration: none;
 }
+
 a:hover { color: #E90094; }
+
+code,pre { font-family: Consolas, monospace; }
 
 /* --- header --- */
 
