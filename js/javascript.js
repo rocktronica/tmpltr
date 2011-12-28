@@ -1,8 +1,11 @@
+// remove the static text for search engines
+document.getElementById("static").style.display = "none";
+
 var tmpltr;		// kept outside for console inspection
 
 // needed:		debounce render
 // consider:	more sensical nomenclature
-// bugs:		occasional stuck view on load
+// bugs:		occasional stuck view on load, opera crappiness (maybe from Ace)
 
 $.fn.ready(function(){
 
@@ -21,7 +24,10 @@ $.fn.ready(function(){
 		style: "",
 		editors: {},
 		$: {
-			output: $("#ifrOutput").contents().find("body")
+			output: {
+				body: $("#ifrOutput").contents().find("body"),
+				head: $("#ifrOutput").contents().find("head")
+			}
 		},
 		fn: {
 			setData: function(_data) {
@@ -61,15 +67,21 @@ $.fn.ready(function(){
 				tmpltr.editors.style.getSession().setValue(settings.style);
 				return true;
 			},
-			renderOutput: function(){
-				tmpltr.$.output.html(
-					Mustache.to_html(tmpltr.structure, tmpltr.data)
-				).append(
-					$("<style />").html(tmpltr.style)
-				);
-				var sTitle = tmpltr.$.output.find("h1:first").text().trim();
-				document.title = tmpltr.appname;
-				if (sTitle && sTitle !== tmpltr.appname) { document.title +=  " - " + sTitle; }
+			renderOutput: function(sWhat){
+				sWhat = sWhat || "all";
+				if ((sWhat === "html") || (sWhat === "all")) {
+					tmpltr.$.output.body.html(
+						Mustache.to_html(tmpltr.structure, tmpltr.data)
+					);
+					var sTitle = tmpltr.$.output.body.find("h1:first").text().trim();
+					document.title = tmpltr.appname;
+					if (sTitle && sTitle !== tmpltr.appname) { document.title +=  " - " + sTitle; }
+				}
+				if ((sWhat === "style") || (sWhat === "all")) {
+					tmpltr.$.output.head.html(
+						$("<style />").html(tmpltr.style)
+					);
+				}
 			},
 			saveToLocal: function(){
 				var obj = {
@@ -115,7 +127,7 @@ $.fn.ready(function(){
 			},
 			export: function(){
 				// will open a data URI in a new window, some browsers may cut it off...
-				var sTitle = tmpltr.$.output.find("h1:first").text().trim();
+				var sTitle = tmpltr.$.output.body.find("h1:first").text().trim();
 				var sUrl = "data:text/html," +
 				encodeURIComponent(
 					(sTitle ? "<title>" + sTitle + "</title> " : "") +
@@ -143,7 +155,9 @@ $.fn.ready(function(){
 				if (!params.data || !params.structure || !params.style) { return false; }
 				tmpltr.fn.useDataStructureStyle(params);
 				// clean up URL
-				history.replaceState(null, null, document.location.pathname);
+				if (Modernizr.history) {
+					history.replaceState(null, null, document.location.pathname);
+				}
 				return true;
 			},
 			fileDragOver: function (evt) {
@@ -212,17 +226,17 @@ $.fn.ready(function(){
 	// could be abstracted more
 	tmpltr.editors.data.getSession().on('change', function() {
 		tmpltr.fn.setData(tmpltr.editors.data.getSession().getValue());
-		tmpltr.fn.renderOutput();
+		tmpltr.fn.renderOutput("html");
 		tmpltr.fn.saveToLocal();
 	});
 	tmpltr.editors.structure.getSession().on('change', function() {
 		tmpltr.fn.setStructure(tmpltr.editors.structure.getSession().getValue());
-		tmpltr.fn.renderOutput();
+		tmpltr.fn.renderOutput("html");
 		tmpltr.fn.saveToLocal();
 	});
 	tmpltr.editors.style.getSession().on('change', function() {
 		tmpltr.fn.setStyle(tmpltr.editors.style.getSession().getValue());
-		tmpltr.fn.renderOutput();
+		tmpltr.fn.renderOutput("style");
 		tmpltr.fn.saveToLocal();
 	});
 	
@@ -254,12 +268,12 @@ $.fn.ready(function(){
 	if (Modernizr.file) {
 		$body[0].addEventListener('dragover', tmpltr.fn.fileDragOver, false);
 		$body[0].addEventListener('drop', tmpltr.fn.fileDrop, false);
-		tmpltr.$.output[0].addEventListener('dragover', tmpltr.fn.fileDragOver, false);
-		tmpltr.$.output[0].addEventListener('drop', tmpltr.fn.fileDrop, false);
+		tmpltr.$.output.body[0].addEventListener('dragover', tmpltr.fn.fileDragOver, false);
+		tmpltr.$.output.body[0].addEventListener('drop', tmpltr.fn.fileDrop, false);
 	}
 
 	// force links in output out of iframe
-	tmpltr.$.output.on("click", "a", function() {
+	tmpltr.$.output.body.on("click", "a", function() {
 		var $a = $(this);
 		if ($a.attr("href") && $a.attr("href") !== "#") {
 			document.location = $a.attr("href");
