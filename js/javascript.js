@@ -125,7 +125,7 @@ $.fn.ready(function(){
 				delete localStorage.tmpltr;
 				tmpltr.fn.getDefaults();
 			},
-			export: function(){
+			exportUri: function(){
 				// will open a data URI in a new window, some browsers may cut it off...
 				var sTitle = tmpltr.$.output.body.find("h1:first").text().trim();
 				var sUrl = "data:text/html," +
@@ -257,7 +257,7 @@ $.fn.ready(function(){
 			return false;
 		})
 		.on("click", "#aExport", function(){
-			tmpltr.fn.export();
+			tmpltr.fn.exportUri();
 			return false;
 		});
 
