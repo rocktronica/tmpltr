@@ -43,20 +43,11 @@ a {
 }
 
 a:hover { color: #E90094; }
-
 code,pre { font-family: Consolas, monospace; }
 
 /* --- header --- */
 
-header * {
-	display: inline-block;
-	margin: 0 10px 20px 0;
-}
-
-header p {
-	color: #666;
-	font-style: italic;
-}
+header ul { color: #666; }
 
 /* --- footer --- */
 

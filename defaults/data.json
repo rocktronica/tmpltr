@@ -17,17 +17,26 @@
 		{
 			title: "Make It Better",
 			paragraphs: [
-				"Requests welcome. Forks encouraged. Contact me <a href=\"http://mynameistommy.com/\">here</a> if you have any questions or suggestions.",
-				"<strong>Source:</strong> <a href=\"https://github.com/rocktronica/tmpltr\">https://github.com/rocktronica/tmpltr</a>"
-			]
+				"Requests welcome. Forks encouraged. Contact me <a href=\"http://mynameistommy.com/\">here</a> if you have any questions or suggestions."
+			],
+			table: {
+				keyvalues: [
+					{ key: "Source", value: "https://github.com/rocktronica/tmpltr" },
+					{ key: "Blog Post", value: "http://iamnotagoodartist.com/web/tmpltr-a-realtime-tinkertool-for-json-templating" }
+				]
+			}
+		}, {
+			title: "Attribution",
+			table: {
+				keyvalues: [
+					{ key: "Mustache", value: "http://mustache.github.com/" },
+					{ key: "Ace", value: "https://github.com/ajaxorg/ace" },
+					{ key: "jQuery", value: "http://jquery.com/" },
+					{ key: "Modernizr", value: "http://www.modernizr.com/" },
+					{ key: "PrefixFree", value: "http://leaverou.github.com/prefixfree/" }
+				]
+			}
 		}
-	],
-	attribution: [
-		{ name: "Mustache", url: "http://mustache.github.com/" },
-		{ name: "Ace", url: "https://github.com/ajaxorg/ace" },
-		{ name: "jQuery", url: "http://jquery.com/" },
-		{ name: "Modernizr", url: "http://www.modernizr.com/" },
-		{ name: "PrefixFree", url: "http://leaverou.github.com/prefixfree/" }
 	],
 	footer: "Made by <a href=\"http://mynameistommy.com/\">Tommy</a> (<a href='https://twitter.com/#!/rocktronica'>@rocktronica</a>). MIT licensed or as components require."
 }

@@ -1,11 +1,11 @@
 <header>
 	<h1>{{sitetitle}}</h1>
+    <ul>
+        {{#possibletaglines}}
+    		<li>{{{.}}}</li>
+    	{{/possibletaglines}}
+    </ul>
 </header>
-<ul>
-	{{#possibletaglines}}
-		<li>{{{.}}}</li>
-	{{/possibletaglines}}
-</ul>
 {{#sections}}
 	<section>
 		{{#title}}<h2>{{{title}}}</h2>{{/title}}
@@ -19,23 +19,18 @@
 				{{/items}}
 			</ul>
 		{{/lists}}
+		{{#table}}
+			<table>
+				{{#keyvalues}}
+					<tr>
+						<th>{{{key}}}</th>
+						<td><a href="{{{url}}}">{{{value}}}</a></td>
+					</tr>
+				{{/keyvalues}}
+			</table>
+		{{/table}}
 	</section>
 {{/sections}}
-<h2>Attribution</h2>
-	<table>
-		{{#attribution}}
-			<tr>
-				<th>{{{name}}}</th>
-				<td><a href="{{{url}}}">{{{url}}}</a></td>
-			</tr>
-            {{#children}}
-        		<tr class="child">
-    				<th>{{{name}}}</th>
-    				<td><a href="{{{url}}}">{{{url}}}</a></td>
-    			</tr>
-            {{/children}}
-		{{/attribution}}
-	</table>
 {{#footer}}
 	<footer>
 		<p>{{{footer}}}</p>
