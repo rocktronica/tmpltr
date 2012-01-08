@@ -50,9 +50,11 @@ body.error pre {
 }
 
 a {
-	color: #E90094;
+    color: #CF5935;
 	text-decoration: none;
 }
+
+a:hover { color: #E67654; }
 
 /* --- loading --- */
 
