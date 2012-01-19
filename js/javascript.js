@@ -3,8 +3,8 @@ document.getElementById("static").style.display = "none";
 
 var tmpltr;		// kept outside for console inspection
 
-// needed:		debounce render
-// consider:	more sensical nomenclature
+// needed:		...
+// consider:	more sensical nomenclature, smarter export w/ options, draggable panes
 // bugs:		occasional stuck view on load, opera crappiness (maybe from Ace)
 
 $.fn.ready(function(){
@@ -23,6 +23,10 @@ $.fn.ready(function(){
 		structure: "",
 		style: "",
 		editors: {},
+		throttle: {
+			// in case I add other throttlers later...
+			render: undefined
+		},
 		$: {
 			output: {
 				body: $("#ifrOutput").contents().find("body"),
@@ -68,20 +72,23 @@ $.fn.ready(function(){
 				return true;
 			},
 			renderOutput: function(sWhat){
-				sWhat = sWhat || "all";
-				if ((sWhat === "html") || (sWhat === "all")) {
-					tmpltr.$.output.body.html(
-						Mustache.to_html(tmpltr.structure, tmpltr.data)
-					);
-					var sTitle = tmpltr.$.output.body.find("h1:first").text().trim();
-					document.title = tmpltr.appname;
-					if (sTitle && sTitle !== tmpltr.appname) { document.title +=  " - " + sTitle; }
-				}
-				if ((sWhat === "style") || (sWhat === "all")) {
-					tmpltr.$.output.head.html(
-						$("<style />").html(tmpltr.style)
-					);
-				}
+				tmpltr.throttle.render = tmpltr.throttle.render || setTimeout(function(){
+					sWhat = sWhat || "all";
+					if ((sWhat === "html") || (sWhat === "all")) {
+						tmpltr.$.output.body.html(
+							Mustache.to_html(tmpltr.structure, tmpltr.data)
+						);
+						var sTitle = tmpltr.$.output.body.find("h1:first").text().trim();
+						document.title = tmpltr.appname;
+						if (sTitle && sTitle !== tmpltr.appname) { document.title +=  " - " + sTitle; }
+					}
+					if ((sWhat === "style") || (sWhat === "all")) {
+						tmpltr.$.output.head.html(
+							$("<style />").html(tmpltr.style)
+						);
+					}
+					tmpltr.throttle.render = undefined;
+				}, 500);
 			},
 			saveToLocal: function(){
 				var obj = {

@@ -11,7 +11,7 @@
 				"<em>Confused? Change something in one of the textareas and watch what happens.</em>",
 				"Data is stored as JSON, bound to an HTML template, and styled with CSS. Changes are automatically saved locally to your browser but can also be exported for sharing.",
 				"Browser allowing, you can drag in <code>.JSON</code>, <code>.HMTL</code>, and <code>.CSS</code> files to be loaded respectively.",
-				"Yep, this is another <a href='http://jsfiddle.net/'>jsFiddle</a> clone. But my take's less about JavaScript and more about realtime template binding. It's also mostly just for fun."
+				"Yep, this is another <a href='http://jsfiddle.net/'>jsFiddle</a> clone. But my take's less about JavaScript and more about realtime template binding. It's not a replacement for any of the others, and it's mostly just for fun."
 			]
 		},
 		{
