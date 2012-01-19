@@ -38,12 +38,11 @@ tr.child th {
 }
 
 a {
-    color: #CF5935;
+	color: #CA0080;
 	text-decoration: none;
 }
 
-a:hover { color: #E67654; }
-
+a:hover { color: #E90094; }
 code,pre { font-family: Consolas, monospace; }
 
 /* --- header --- */
